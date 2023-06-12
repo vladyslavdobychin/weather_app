@@ -1,7 +1,7 @@
 import {
   fetchCurrentWeather,
   fetchWeatherForecast,
-} from '../slices/weatherSlice';
+} from '../../slices/weatherSlice';
 import { useDispatch } from 'react-redux';
 
 const SearchBar = () => {

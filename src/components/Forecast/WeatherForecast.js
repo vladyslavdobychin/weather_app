@@ -1,14 +1,16 @@
 import WeatherItem from './WeatherItem';
-import getCurrentDate from '../utils/getCurrentDate';
-import unixTimeConverter from '../utils/unixTimeConverter';
+import getCurrentDate from '../../utils/getCurrentDate';
+import unixTimeConverter from '../../utils/unixTimeConverter';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchWeatherForecast } from '../slices/weatherSlice';
-import { setLastFetchedCity } from '../slices/weatherSlice';
+import { fetchWeatherForecast } from '../../slices/weatherSlice';
+import { setLastFetchedCity } from '../../slices/weatherSlice';
 
 const WeatherForecast = () => {
-  const { forecast, error, lastFetchedCity } = useSelector((state) => state.weather);
+  const { forecast, error, lastFetchedCity } = useSelector(
+    (state) => state.weather
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

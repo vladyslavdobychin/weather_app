@@ -5,9 +5,107 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-weather-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-container {
+  /* display: flex; */
+  justify-content: space-between;
+  /* align-items: stretch; */
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+
+.forecast-item {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Distribute space equally */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* Use the same margin for all sides */
+}
+
+.map-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.three-hour-forecast-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+
+.three-hour-forecast-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Edge */
+}
+
+.current-hour {
+  width: calc(
+    (100% / 5) - 10px
+  ); /* This sets the width of the item to be 1/5 of the parent's width, 
+  adjusting for the 10px margin */
+  margin: 5px; /* This adds some space between the items */
+  padding: 10px; /* This adds some internal space around the content */
+  box-sizing: border-box; /* This makes the padding and border included in the element's total width and height */
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type='text'] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+button[type='submit'] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.weather-icon {
+  margin: 0 auto;
 }

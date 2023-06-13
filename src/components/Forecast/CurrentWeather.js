@@ -3,11 +3,13 @@ import unixTimeConverter from '../../utils/unixTimeConverter';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchCurrentWeather } from '../../slices/weatherSlice'
+import { fetchCurrentWeather } from '../../slices/weatherSlice';
 import { setLastFetchedCity } from '../../slices/weatherSlice';
 
 const CurrentWeather = () => {
-  const { currentWeather, error, lastFetchedCity } = useSelector((state) => state.weather);
+  const { currentWeather, error, lastFetchedCity } = useSelector(
+    (state) => state.weather
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

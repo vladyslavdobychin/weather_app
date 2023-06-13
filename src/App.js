@@ -1,9 +1,11 @@
 import Header from './components/Header/Header';
 import WeatherMap from './components/Map/WeatherMap';
 import store from './store/store';
+import WeatherContainer from './components/Forecast/WeatherContainer';
+import ErrorFallback from './components/Error/ErrorFallback';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
 import './index.css';
-import WeatherContainer from './components/Forecast/WeatherContainer';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
           <Header />
         </header>
         <main className='weather-container'>
-          <WeatherContainer />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <WeatherContainer />
+          </ErrorBoundary>
         </main>
         <div className='map-container'>
           <WeatherMap />

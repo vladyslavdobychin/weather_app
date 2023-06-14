@@ -1,12 +1,14 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import { getCurrentWeather, getWeatherForecast } from '../api';
+import unixTimeConverter from '../utils/unixTimeConverter';
 
 export const fetchCurrentWeather = createAsyncThunk(
   'weather/fetchCurrentWeather',
-  async (location) => {
+  async (location, thunkApi) => {
     const response = await getCurrentWeather(location);
     localStorage.setItem('lastSearchedCity', location);
     localStorage.setItem('lastFetchedWeather', JSON.stringify(response));
+    thunkApi.dispatch(setFocused(unixTimeConverter(response.dt)));
     return response;
   }
 );
@@ -29,11 +31,15 @@ const weatherSlice = createSlice({
     loading: false,
     error: null,
     lastFetchedCity: null,
+    isFocused: false,
   },
   reducers: {
     setLastFetchedCity: (state, action) => {
       state.lastFetchedCity = action.payload;
     },
+    setFocused: (state, action) => {
+      state.isFocused = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -63,4 +69,6 @@ const weatherSlice = createSlice({
 });
 
 export default weatherSlice.reducer;
-export const { setLastFetchedCity } = weatherSlice.actions;
+export const { setLastFetchedCity, setFocused } = weatherSlice.actions;
+
+

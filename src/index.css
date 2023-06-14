@@ -109,3 +109,11 @@ button[type='submit'] {
 .weather-icon {
   margin: 0 auto;
 }
+
+.focused { 
+  border: 1px solid #007bff;
+  outline: none;
+  background-color: #7EB6E0;
+  border-radius: 4px;
+}
+

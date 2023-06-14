@@ -1,4 +1,4 @@
-const WeatherItem = ({ data, dateConverted, isCurrent, icon }) => {
+const WeatherItem = ({ data, dateConverted, isCurrent, icon, isFocused }) => {
   const {
     name,
     sys: { country },
@@ -6,8 +6,10 @@ const WeatherItem = ({ data, dateConverted, isCurrent, icon }) => {
     weather,
   } = data;
 
+  const focused = dateConverted === isFocused;
+
   return (
-    <div key={data.dt} className='forecast-item'>
+    <div key={data.dt} className={`forecast-item ${focused ? 'focused' : ''}`}>
       <img
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt='weather icon'

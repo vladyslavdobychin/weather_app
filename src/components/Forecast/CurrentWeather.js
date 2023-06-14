@@ -7,7 +7,7 @@ import { fetchCurrentWeather } from '../../slices/weatherSlice';
 import { setLastFetchedCity } from '../../slices/weatherSlice';
 
 const CurrentWeather = () => {
-  const { currentWeather, error, lastFetchedCity } = useSelector(
+  const { currentWeather, error, lastFetchedCity, isFocused } = useSelector(
     (state) => state.weather
   );
   const dispatch = useDispatch();
@@ -49,6 +49,7 @@ const CurrentWeather = () => {
       dateConverted={dateConverted}
       isCurrent={true}
       icon={currentWeather.weather[0].icon}
+      isFocused={isFocused}
     />
   );
 };

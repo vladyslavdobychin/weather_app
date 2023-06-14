@@ -3,7 +3,7 @@ import unixTimeConverter from '../../utils/unixTimeConverter';
 import ThreeHourStepItem from './ThreeHourStepItem';
 
 const ThreeHourStepForecast = () => {
-  const { forecast, isFocused } = useSelector((state) => state.weather);
+  const { forecast, isFocused, currentTime } = useSelector((state) => state.weather);
 
   if (!forecast) return null;
 
@@ -21,6 +21,7 @@ const ThreeHourStepForecast = () => {
             temp={item.main.temp}
             key={item.dt}
             isFocused={isFocused}
+            currentTime={currentTime}
           />
         );
       })}

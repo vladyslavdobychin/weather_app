@@ -39,7 +39,10 @@ const weatherSlice = createSlice({
     },
     setFocused: (state, action) => {
       state.isFocused = action.payload;
-    }
+    },
+    setCurrentTime: (state, action) => {
+      state.currentTime = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,6 +72,4 @@ const weatherSlice = createSlice({
 });
 
 export default weatherSlice.reducer;
-export const { setLastFetchedCity, setFocused } = weatherSlice.actions;
-
-
+export const { setLastFetchedCity, setFocused, setCurrentTime } = weatherSlice.actions;

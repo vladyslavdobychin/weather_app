@@ -16,7 +16,6 @@ const WeatherItem = ({ data, dateConverted, isCurrent, icon }) => {
 
   const handleClick = () => {
     dispatch(setFocused(getNormalizedDate(data.dt)));
-
   };
   
   

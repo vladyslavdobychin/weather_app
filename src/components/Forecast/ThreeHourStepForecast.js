@@ -12,10 +12,16 @@ const ThreeHourStepForecast = () => {
       {forecast.list.map((item) => {
         const time = item.dt_txt.split(' ')[1].slice(0, 5);
         const icon = item.weather[0].icon;
-        const dateConverted = unixTimeConverter(item.dt);
 
         return (
-          <ThreeHourStepItem time={time} icon={icon} temp={item.main.temp} key={item.dt} dateConverted={dateConverted} isFocused={isFocused}/>
+          <ThreeHourStepItem
+            data={item}
+            time={time}
+            icon={icon}
+            temp={item.main.temp}
+            key={item.dt}
+            isFocused={isFocused}
+          />
         );
       })}
     </div>

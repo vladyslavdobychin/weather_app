@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import { getCurrentWeather, getWeatherForecast } from '../api';
-import unixTimeConverter from '../utils/unixTimeConverter';
+import getNormalizedDate from '../utils/getNormalizedDate';
 
 export const fetchCurrentWeather = createAsyncThunk(
   'weather/fetchCurrentWeather',
@@ -8,7 +8,7 @@ export const fetchCurrentWeather = createAsyncThunk(
     const response = await getCurrentWeather(location);
     localStorage.setItem('lastSearchedCity', location);
     localStorage.setItem('lastFetchedWeather', JSON.stringify(response));
-    thunkApi.dispatch(setFocused(unixTimeConverter(response.dt)));
+    thunkApi.dispatch(setFocused(getNormalizedDate(response.dt)));
     return response;
   }
 );

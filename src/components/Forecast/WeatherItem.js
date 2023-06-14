@@ -1,4 +1,10 @@
-const WeatherItem = ({ data, dateConverted, isCurrent, icon, isFocused }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { setFocused } from '../../slices/weatherSlice';
+import getNormalizedDate from '../../utils/getNormalizedDate';
+
+const WeatherItem = ({ data, dateConverted, isCurrent, icon }) => {
+  const { isFocused } = useSelector((state) => state.weather);
+  const dispatch = useDispatch();
   const {
     name,
     sys: { country },
@@ -6,10 +12,20 @@ const WeatherItem = ({ data, dateConverted, isCurrent, icon, isFocused }) => {
     weather,
   } = data;
 
-  const focused = dateConverted === isFocused;
+  const focused = getNormalizedDate(data.dt) === isFocused;
+
+  const handleClick = () => {
+    dispatch(setFocused(getNormalizedDate(data.dt)));
+
+  };
+  
+  
 
   return (
-    <div key={data.dt} className={`forecast-item ${focused ? 'focused' : ''}`}>
+    <div
+      key={data.dt}
+      className={`forecast-item ${focused ? 'focused' : ''}`}
+      onClick={handleClick}>
       <img
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt='weather icon'

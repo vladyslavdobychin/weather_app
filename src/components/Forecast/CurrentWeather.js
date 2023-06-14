@@ -41,15 +41,12 @@ const CurrentWeather = () => {
 
   if (!currentWeather) return null;
 
-  const dateConverted = unixTimeConverter(currentWeather.dt);
-
   return (
     <WeatherItem
       data={currentWeather}
-      dateConverted={dateConverted}
+      dateConverted={unixTimeConverter(currentWeather.dt)}
       isCurrent={true}
       icon={currentWeather.weather[0].icon}
-      isFocused={isFocused}
     />
   );
 };

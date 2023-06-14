@@ -1,6 +1,8 @@
-const ThreeHourStepItem = ({ time, icon, temp, dateConverted, isFocused }) => {
+import getNormalizedDate from '../../utils/getNormalizedDate';
+
+const ThreeHourStepItem = ({ time, icon, temp, data, isFocused }) => {
   const iconLink = `https://openweathermap.org/img/wn/${icon}.png`;
-  const focused = dateConverted === isFocused;
+  const focused = getNormalizedDate(data.dt) === isFocused;
 
   return (
     <div className={`current-hour ${focused ? 'focused' : ''}`}>
